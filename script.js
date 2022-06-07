@@ -1,19 +1,16 @@
-//your code here
+const panels = document.querySelectorAll('.panel');
 
-function reset() {
-    for (i = 1; i <= 9; i++) {
-        const block = document.getElementById(`${i}`);
-        block.style.backgroundColor = "transparent";
-    }
+function toggleOpen() {
+  console.log('Hello');
+  this.classList.toggle('open');
 }
-  
-document.getElementById('reset_button').addEventListener('click', reset);
 
-document.getElementById('change_button').addEventListener('click', () => {
-    reset();
-    const blockId = document.getElementById("block_id").value;
-    const color = document.getElementById("colour_id").value;
-    // alert(colorId)
-    const block = document.getElementById(`${blockId}`);
-    block.style.backgroundColor = color;
-});
+function toggleActive(e) {
+  console.log(e.propertyName);
+  if (e.propertyName.includes('flex')) {
+    this.classList.toggle('open-active');
+  }
+}
+
+panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+panels.forEach(panel => panel.addEventListener('transitionend', toggleActive)); 
